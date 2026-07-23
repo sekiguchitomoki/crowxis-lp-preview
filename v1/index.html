@@ -720,6 +720,90 @@ body.qa-still[data-screen="1"] .sun-emblem,body.qa-final .sun-emblem{opacity:1!i
 </head>
 <body>
 
+<!-- ==================== パスワードゲート（限定公開） ==================== -->
+<div id="pwGate">
+  <div class="pw-box">
+    <img src="assets/logo_yoko.svg" alt="Crowxis" class="pw-logo">
+    <p class="pw-lead">このページは限定公開です。<br>パスワードを入力してください。</p>
+    <form id="pwForm" autocomplete="off">
+      <input type="password" id="pwInput" placeholder="Password" autocomplete="off" autofocus>
+      <button type="submit">ENTER</button>
+    </form>
+    <span id="pwErr"></span>
+  </div>
+</div>
+<style>
+#pwGate{
+  position:fixed;inset:0;z-index:300;
+  background:
+    radial-gradient(900px 600px at 70% 40%, rgba(70,54,20,.25), transparent 65%),
+    linear-gradient(160deg,#1c1d22 0%, #101114 100%);
+  display:flex;align-items:center;justify-content:center;
+  transition:opacity .5s ease;
+}
+#pwGate.out{opacity:0;pointer-events:none;}
+.pw-box{text-align:center;padding:0 24px;}
+.pw-logo{height:52px;width:auto;margin:0 auto 30px;}
+.pw-lead{
+  font-family:var(--f-min);font-size:14px;line-height:2.1;letter-spacing:.12em;
+  color:var(--paper-dim);margin-bottom:30px;
+}
+#pwForm{display:flex;gap:12px;justify-content:center;}
+#pwInput{
+  width:min(260px,60vw);padding:13px 18px;
+  background:rgba(236,233,228,.06);
+  border:1px solid rgba(236,233,228,.3);border-radius:999px;
+  color:var(--paper);font-family:var(--f-sans);font-size:14px;letter-spacing:.1em;
+  outline:none;transition:border-color .3s;
+}
+#pwInput:focus{border-color:var(--gold);}
+#pwForm button{
+  font-family:var(--f-en);font-size:12px;letter-spacing:.24em;
+  color:var(--paper);background:none;cursor:pointer;
+  border:1px solid rgba(236,233,228,.5);border-radius:999px;padding:13px 26px;
+  transition:all .3s;
+}
+#pwForm button:hover{border-color:var(--gold);color:var(--gold-hi);box-shadow:0 0 18px rgba(229,182,77,.3);}
+#pwErr{
+  display:block;margin-top:18px;min-height:1.4em;
+  font-family:var(--f-sans);font-size:12px;letter-spacing:.1em;color:#d98a8a;
+}
+.pw-box.shake{animation:pwShake .4s ease;}
+@keyframes pwShake{
+  0%,100%{transform:translateX(0);}
+  25%{transform:translateX(-8px);}
+  50%{transform:translateX(8px);}
+  75%{transform:translateX(-5px);}
+}
+</style>
+<script>
+(function(){
+  var HASH = '7cd0a8196742924558d70f3c640536dcf33f6e0e33567f93f2d62d153bb6c453';
+  var gate = document.getElementById('pwGate');
+  if(sessionStorage.getItem('cx_auth') === '1'){ gate.remove(); return; }
+  function sha256(s){
+    var b = new TextEncoder().encode(s);
+    return crypto.subtle.digest('SHA-256', b).then(function(h){
+      return Array.prototype.map.call(new Uint8Array(h), function(x){ return x.toString(16).padStart(2,'0'); }).join('');
+    });
+  }
+  document.getElementById('pwForm').addEventListener('submit', function(ev){
+    ev.preventDefault();
+    var v = document.getElementById('pwInput').value;
+    sha256(v).then(function(h){
+      if(h === HASH){
+        sessionStorage.setItem('cx_auth','1');
+        location.reload();               // 認証後は最初から（オープニングムービーから）再生
+      }else{
+        document.getElementById('pwErr').textContent = 'パスワードが違います';
+        var box = gate.querySelector('.pw-box');
+        box.classList.remove('shake'); void box.offsetWidth; box.classList.add('shake');
+      }
+    });
+  });
+})();
+</script>
+
 <!-- ==================== OPENING ==================== -->
 <div id="opening">
   <video id="openingVideo" src="assets/opening.mp4" autoplay muted playsinline preload="auto"></video>
