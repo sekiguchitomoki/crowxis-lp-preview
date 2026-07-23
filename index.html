@@ -73,6 +73,11 @@ body::before{
     radial-gradient(1000px 800px at 82% 50%, rgba(84,64,22,.32), transparent 65%),
     linear-gradient(200deg,#292a30 0%, #1e1f24 100%);
 }
+.bgt-movie{
+  background:
+    radial-gradient(1000px 620px at 50% 46%, rgba(58,56,50,.6), transparent 68%),
+    linear-gradient(180deg,#1e1f24 0%, #26272c 50%, #1c1d22 100%);
+}
 .bgt-about{
   background:linear-gradient(180deg,#202127 0%, #2a2b31 50%, #202127 100%);
 }
@@ -91,6 +96,7 @@ body::before{
   filter:drop-shadow(0 22px 70px rgba(0,0,0,.5));
 }
 .bw-msg{transform:scaleY(-1);}                       /* 上辺・右→左 */
+.bw-movie{inset:-26%;transform:translateY(-46vmin) rotate(30deg) scaleX(-1);opacity:.8;}  /* 左上→右下へ斬り下ろす対角 */
 .bw-about{inset:-26%;transform:translateY(-46vmin) rotate(-30deg);}  /* センターへ「どん！」と対角 */
 .bw-news{                                            /* 急角度の一閃を右上→左下へ */
   inset:-30%;
@@ -250,6 +256,7 @@ body.menu-open .menu-inner a:nth-child(2){transition-delay:.22s;}
 body.menu-open .menu-inner a:nth-child(3){transition-delay:.29s;}
 body.menu-open .menu-inner a:nth-child(4){transition-delay:.36s;}
 body.menu-open .menu-inner a:nth-child(5){transition-delay:.43s;}
+body.menu-open .menu-inner a:nth-child(6){transition-delay:.5s;}
 
 /* ページャー（右端のドット） */
 #pager{
@@ -503,7 +510,63 @@ body[data-screen="1"] .sun-glint i{
 /* （紋章は太陽ステージへ移設。右カラムは太陽のためのスペース） */
 
 /* ============================================================
-   3. ABOUT
+   3. MOVIE（ブランドCM）
+============================================================ */
+.movie-inner{
+  position:relative;z-index:5;width:min(1100px,92vw);margin:0 auto;text-align:center;
+}
+.movie-title{
+  margin-top:14px;
+  font-family:var(--f-min);font-weight:400;
+  font-size:clamp(28px,3.6vw,46px);letter-spacing:.2em;
+}
+.movie-frame{
+  position:relative;margin:5vh auto 0;
+  width:min(880px,76vw);aspect-ratio:16/9;
+  background:linear-gradient(160deg,#0c0c0f 0%, #131418 60%, #0e0f13 100%);
+  border:1px solid rgba(236,233,228,.2);
+  box-shadow:0 34px 90px rgba(0,0,0,.55);
+  display:flex;align-items:center;justify-content:center;
+}
+.movie-frame::before{
+  content:"";position:absolute;inset:-12px;pointer-events:none;
+  border:1px solid rgba(229,182,77,.22);
+}
+.movie-frame::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse 60% 55% at 50% 42%, rgba(236,233,228,.05), transparent 70%);
+}
+.movie-play{
+  width:min(96px,14vw);aspect-ratio:1/1;border-radius:50%;
+  background:rgba(10,10,12,.4);border:1px solid rgba(236,233,228,.6);
+  cursor:pointer;position:relative;
+  transition:all .4s;
+}
+.movie-play i{
+  position:absolute;left:54%;top:50%;transform:translate(-50%,-50%);
+  width:0;height:0;display:block;
+  border-style:solid;border-width:11px 0 11px 19px;
+  border-color:transparent transparent transparent var(--paper);
+  transition:border-color .4s;
+}
+.movie-play:hover{
+  border-color:var(--gold);
+  box-shadow:0 0 26px rgba(229,182,77,.4);
+  transform:scale(1.06);
+}
+.movie-play:hover i{border-color:transparent transparent transparent var(--gold-hi);}
+.movie-coming{
+  position:absolute;bottom:26px;left:50%;transform:translateX(-50%);
+  font-family:var(--f-en);font-size:12px;letter-spacing:.42em;color:var(--paper-dim);
+}
+.movie-caption{
+  margin-top:3.5vh;
+  font-family:var(--f-sans);font-weight:300;
+  font-size:13px;letter-spacing:.1em;color:var(--paper-dim);
+}
+
+/* ============================================================
+   4. ABOUT
 ============================================================ */
 /* 八咫烏 — 墨絵（オリジナル素材・左向き・三本足） */
 .about-crow{
@@ -779,6 +842,7 @@ body.qa-still[data-screen="1"] .sun-emblem,body.qa-final .sun-emblem{opacity:1!i
 <div id="bgStage">
   <div class="bg-tint bgt-hero"></div>
   <div class="bg-tint bgt-message"></div>
+  <div class="bg-tint bgt-movie"></div>
   <div class="bg-tint bgt-about"></div>
   <div class="bg-tint bgt-news"></div>
   <div class="bg-tint bgt-footer"></div>
@@ -804,6 +868,7 @@ body.qa-still[data-screen="1"] .sun-emblem,body.qa-final .sun-emblem{opacity:1!i
   <nav class="menu-inner">
     <a href="#hero">Home<small>ページトップ</small></a>
     <a href="#message">Brand Identity<small>メッセージ</small></a>
+    <a href="#movie">Brand Movie<small>ブランドCM</small></a>
     <a href="#about">Concept<small>Crowxisとは</small></a>
     <a href="#news">News &amp; Information<small>ニュース</small></a>
     <a href="#footer">Contact<small>各種お問い合わせ</small></a>
@@ -847,7 +912,23 @@ body.qa-still[data-screen="1"] .sun-emblem,body.qa-final .sun-emblem{opacity:1!i
   </div>
 </section>
 
-<!-- ==================== 3. ABOUT ==================== -->
+<!-- ==================== 3. MOVIE（ブランドCM） ==================== -->
+<section id="movie">
+  <div class="brushwipe bw-movie" data-brush data-shape="arc" data-align="xMidYMax" data-edgefade></div>
+  <div class="movie-inner">
+    <span class="section-label rv">Brand Movie</span>
+    <h2 class="movie-title rv" data-delay="1">ブランドCM</h2>
+    <div class="movie-frame rv" data-delay="2">
+      <button class="movie-play" aria-label="再生">
+        <i></i>
+      </button>
+      <span class="movie-coming">COMING SOON</span>
+    </div>
+    <p class="movie-caption rv" data-delay="3">ブランドムービーは近日公開予定です。</p>
+  </div>
+</section>
+
+<!-- ==================== 4. ABOUT ==================== -->
 <section id="about">
   <div class="brushwipe bw-about" data-brush data-shape="arc" data-align="xMidYMax" data-edgefade></div>
   <div class="about-crow"><img src="assets/yatagarasu_sumi.png" alt="三本足の八咫烏"></div>
@@ -916,7 +997,7 @@ body.qa-still[data-screen="1"] .sun-emblem,body.qa-final .sun-emblem{opacity:1!i
         <h5>Brand Identity</h5>
         <ul>
           <li><a href="#message">メッセージ</a></li>
-          <li><a href="#hero">イメージムービー</a></li>
+          <li><a href="#movie">イメージムービー</a></li>
           <li><a href="#about">Crowxisとは</a></li>
         </ul>
       </div>
@@ -1124,7 +1205,7 @@ body.qa-still[data-screen="1"] .sun-emblem,body.qa-final .sun-emblem{opacity:1!i
   /* ============================================================
      フルページ・エンジン
   ============================================================ */
-  var slides = ['hero','message','about','news','footer'].map(function(id){ return document.getElementById(id); });
+  var slides = ['hero','message','movie','about','news','footer'].map(function(id){ return document.getElementById(id); });
   var tints  = document.querySelectorAll('.bg-tint');
   var SEG = 1 / slides.length;
   var cur = -1, animating = false;
