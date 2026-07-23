@@ -843,8 +843,10 @@ body[data-screen="1"] .sun-glint i{
   .about-cols{grid-template-columns:1fr;gap:30px;margin-top:5vh;}
   .about-col + .about-col::before{display:none;}
   .about-col{border-top:1px solid var(--line);padding:30px 6px 6px;}
-  .news-item{grid-template-columns:1fr;gap:16px;padding:30px 4px;}
+  .news-item{grid-template-columns:1fr;gap:12px;padding:22px 4px;}
   .news-meta{flex-direction:row;align-items:center;}
+  .news-list{margin-top:4vh;}
+  .news-cta{margin-top:4vh;}
   .footer-inner{grid-template-columns:1fr;}
   .footer-col2{border-left:none;padding-left:0;border-top:1px solid rgba(236,233,228,.12);padding-top:30px;}
   .footer-crow{opacity:.3;}
@@ -1457,6 +1459,7 @@ body.qa-still[data-screen="1"] .sun-emblem,body.qa-final .sun-emblem{opacity:1!i
         resetBrush(s.id);
       });
       inc.classList.add('is-active','on');
+      inc.scrollTop = 0;
       var bi = brushes[inc.id];
       if(bi) setBrushP(bi, 1);
       return;
@@ -1471,10 +1474,12 @@ body.qa-still[data-screen="1"] .sun-emblem,body.qa-final .sun-emblem{opacity:1!i
       setTimeout(function(){
         out.classList.remove('is-leaving');
         out.style.transform = '';
+        out.scrollTop = 0;             // スクロール位置もリセット
         resetBrush(out.id);            // 次回入場時にまた一筆から描く
       }, 850);
     }
-    // 入場: 位置をセット → 次フレームでアクティブ化
+    // 入場: 位置をセット → 次フレームでアクティブ化（スクロール位置は必ず先頭へ）
+    inc.scrollTop = 0;
     inc.style.transition = 'none';
     inc.style.transform = 'translateY(' + (dir > 0 ? 8 : -8) + 'vh)';
     inc.style.visibility = 'visible';
