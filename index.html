@@ -228,6 +228,7 @@ body.is-open .site-header{opacity:1;pointer-events:auto;}
 #menuBtn span:nth-child(2){top:26px;}
 #menuBtn span:nth-child(3){top:34px;}
 #menuBtn:hover span{background:var(--gold-hi);}
+#menuBtn:focus{outline:none;}
 body.menu-open #menuBtn span:nth-child(1){top:26px;transform:rotate(45deg);}
 body.menu-open #menuBtn span:nth-child(2){opacity:0;}
 body.menu-open #menuBtn span:nth-child(3){top:26px;transform:rotate(-45deg);}
@@ -833,6 +834,11 @@ body[data-screen="1"] .sun-glint i{
   body[data-screen="1"] #sunStage{opacity:.65;}
   /* メニューは上寄せ＋ヘッダー分の余白＋内部スクロール */
   #menuOverlay{align-items:flex-start;padding:88px 0 24px;}
+  /* コンテンツが画面高を超える画面は上寄せ（中央揃えだと上が切れるため） */
+  #about,#news{align-items:flex-start;}
+  .about-inner{padding:92px 0 48px;}
+  .news-inner{padding:92px 0 48px;}
+  .movie-inner{padding:80px 0 40px;}
   .message-inner{grid-template-columns:1fr;gap:5vh;}
   .about-cols{grid-template-columns:1fr;gap:30px;margin-top:5vh;}
   .about-col + .about-col::before{display:none;}
