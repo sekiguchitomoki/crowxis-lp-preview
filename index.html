@@ -238,25 +238,50 @@ body.menu-open #menuBtn span:nth-child(3){top:26px;transform:rotate(-45deg);}
   display:flex;align-items:center;justify-content:center;
 }
 body.menu-open #menuOverlay{opacity:1;visibility:visible;}
-.menu-inner{text-align:center;}
-.menu-inner a{
-  display:block;font-family:var(--f-en);font-size:clamp(26px,4vw,40px);
-  letter-spacing:.14em;color:var(--paper);padding:14px 0;
-  opacity:0;transform:translateY(24px);
-  transition:opacity .5s, transform .5s, color .3s;
+/* フッターのサイトマップと同構成のメニュー */
+.menu-inner{
+  display:grid;grid-template-columns:1.1fr .9fr;gap:6vw;
+  width:min(1000px,86vw);text-align:left;
 }
-.menu-inner a small{
-  display:block;font-family:var(--f-sans);font-weight:300;
-  font-size:11px;letter-spacing:.3em;color:var(--gold-dim);margin-top:4px;
+.menu-col2{border-left:1px solid rgba(236,233,228,.12);padding-left:5vw;}
+.menu-group{
+  margin-bottom:30px;
+  opacity:0;transform:translateY(22px);
+  transition:opacity .5s ease, transform .5s ease;
 }
-.menu-inner a:hover{color:var(--gold-hi);}
-body.menu-open .menu-inner a{opacity:1;transform:translateY(0);}
-body.menu-open .menu-inner a:nth-child(1){transition-delay:.15s;}
-body.menu-open .menu-inner a:nth-child(2){transition-delay:.22s;}
-body.menu-open .menu-inner a:nth-child(3){transition-delay:.29s;}
-body.menu-open .menu-inner a:nth-child(4){transition-delay:.36s;}
-body.menu-open .menu-inner a:nth-child(5){transition-delay:.43s;}
-body.menu-open .menu-inner a:nth-child(6){transition-delay:.5s;}
+body.menu-open .menu-group{opacity:1;transform:translateY(0);}
+body.menu-open .menu-group:nth-of-type(1){transition-delay:.14s;}
+body.menu-open .menu-group:nth-of-type(2){transition-delay:.2s;}
+body.menu-open .menu-group:nth-of-type(3){transition-delay:.26s;}
+body.menu-open .menu-group:nth-of-type(4){transition-delay:.32s;}
+.menu-col2 .menu-group:nth-of-type(1){transition-delay:.38s;}
+.menu-col2 .menu-group:nth-of-type(2){transition-delay:.44s;}
+.mg-head{
+  display:inline-block;font-family:var(--f-en);font-weight:500;
+  font-size:clamp(22px,2.4vw,30px);letter-spacing:.06em;color:var(--paper);
+  padding-bottom:8px;margin-bottom:6px;position:relative;
+  transition:color .3s;
+}
+.mg-head::after{
+  content:"";position:absolute;left:0;bottom:0;width:100%;height:1px;
+  background:linear-gradient(90deg,var(--line),transparent);
+}
+.mg-head small{
+  font-family:var(--f-sans);font-weight:300;
+  font-size:12px;letter-spacing:.2em;color:var(--paper-dim);margin-left:14px;
+}
+.mg-head.jp{font-family:var(--f-min);font-weight:400;letter-spacing:.12em;}
+a.mg-head:hover{color:var(--gold-hi);}
+.menu-group ul{list-style:none;margin-top:10px;}
+.menu-group li{margin:8px 0;}
+.menu-group li a{
+  font-family:var(--f-sans);font-weight:300;
+  font-size:13.5px;letter-spacing:.1em;color:var(--paper-dim);
+  display:inline-flex;align-items:center;gap:10px;
+  transition:color .3s, gap .3s;
+}
+.menu-group li a::before{content:"—";color:var(--gold-dim);font-size:12px;}
+.menu-group li a:hover{color:var(--gold-hi);gap:16px;}
 
 /* ページャー（右端のドット） */
 #pager{
@@ -786,6 +811,9 @@ body[data-screen="1"] .sun-glint i{
     left:16px;right:16px;bottom:70px;
     flex-wrap:wrap;gap:8px;font-size:11px;
   }
+  .menu-inner{grid-template-columns:1fr;gap:0;width:86vw;max-height:80vh;overflow-y:auto;}
+  .menu-col2{border-left:none;padding-left:0;border-top:1px solid rgba(236,233,228,.12);padding-top:24px;}
+  .menu-group{margin-bottom:20px;}
 }
 @media (prefers-reduced-motion: reduce){
   *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.2s!important;}
@@ -950,12 +978,38 @@ body.qa-still[data-screen="1"] .sun-emblem,body.qa-final .sun-emblem{opacity:1!i
 
 <div id="menuOverlay">
   <nav class="menu-inner">
-    <a href="#hero">Home<small>ページトップ</small></a>
-    <a href="#message">Brand Identity<small>メッセージ</small></a>
-    <a href="#movie">Brand Movie<small>ブランドCM</small></a>
-    <a href="#about">Concept<small>Crowxisとは</small></a>
-    <a href="#news">News &amp; Information<small>ニュース</small></a>
-    <a href="#footer">Contact<small>各種お問い合わせ</small></a>
+    <div class="menu-col">
+      <div class="menu-group">
+        <a class="mg-head" href="#hero">Home<small>ページトップ</small></a>
+      </div>
+      <div class="menu-group">
+        <span class="mg-head">Brand Identity</span>
+        <ul>
+          <li><a href="#message">メッセージ</a></li>
+          <li><a href="#movie">イメージムービー</a></li>
+          <li><a href="#about">Crowxisとは</a></li>
+        </ul>
+      </div>
+      <div class="menu-group">
+        <span class="mg-head">Concept</span>
+        <ul>
+          <li><a href="#about">ビジョン</a></li>
+          <li><a href="#about">名称・キャラクター</a></li>
+          <li><a href="#about">製品思想</a></li>
+        </ul>
+      </div>
+      <div class="menu-group">
+        <a class="mg-head" href="#news">News &amp; Information</a>
+      </div>
+    </div>
+    <div class="menu-col menu-col2">
+      <div class="menu-group">
+        <a class="mg-head jp" href="#">各種お問い合わせ</a>
+      </div>
+      <div class="menu-group">
+        <a class="mg-head jp" href="#">運営情報<small>（シー・エフ・デー販売株式会社）</small></a>
+      </div>
+    </div>
   </nav>
 </div>
 
