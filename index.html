@@ -35,8 +35,9 @@
   --f-min:  'A-OTF リュウミン Pr6N L-KL','リュウミン Pr6N L-KL','Ryumin Pr6N','A-OTF Ryumin Pr6N','Hiragino Mincho ProN','Yu Mincho','Noto Serif JP',serif;
   --f-sans: 'Noto Sans JP','Hiragino Kaku Gothic ProN',sans-serif;
 }
-*{margin:0;padding:0;box-sizing:border-box;}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
 html,body{height:100%;overscroll-behavior:none;}
+button:focus:not(:focus-visible){outline:none;}
 body{
   background:var(--bg);
   color:var(--paper);
@@ -826,7 +827,12 @@ body[data-screen="1"] .sun-glint i{
   .brushwipe svg{filter:none;}
   #cursorGlow{display:none;}
   .hero-inner{grid-template-columns:1fr;}
-  #sunStage{right:-30vw;top:36%;width:100vw;}
+  /* 太陽ステージはコンテンツの下のレイヤーへ（文字が潜らないように） */
+  #sunStage{right:-28vw;top:26%;width:94vw;z-index:4;}
+  body[data-screen="0"] #sunStage{opacity:.85;}
+  body[data-screen="1"] #sunStage{opacity:.65;}
+  /* メニューは上寄せ＋ヘッダー分の余白＋内部スクロール */
+  #menuOverlay{align-items:flex-start;padding:88px 0 24px;}
   .message-inner{grid-template-columns:1fr;gap:5vh;}
   .about-cols{grid-template-columns:1fr;gap:30px;margin-top:5vh;}
   .about-col + .about-col::before{display:none;}
@@ -842,7 +848,7 @@ body[data-screen="1"] .sun-glint i{
     left:16px;right:16px;bottom:70px;
     flex-wrap:wrap;gap:8px;font-size:11px;
   }
-  .menu-inner{grid-template-columns:1fr;gap:0;width:88vw;max-height:82vh;overflow-y:auto;}
+  .menu-inner{grid-template-columns:1fr;gap:0;width:88vw;max-height:calc(100dvh - 112px);overflow-y:auto;}
   .menu-col2{border-left:none;padding-left:0;border-top:1px solid rgba(236,233,228,.12);padding-top:24px;}
   .menu-group{margin-bottom:20px;}
   /* スマホ: ポリシーリンクはボタン型2カラム・タップ領域を確保 */
