@@ -36,7 +36,7 @@
   --f-sans: 'Noto Sans JP','Hiragino Kaku Gothic ProN',sans-serif;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
-html,body{height:100%;}
+html,body{height:100%;overscroll-behavior:none;}
 body{
   background:var(--bg);
   color:var(--paper);
@@ -336,6 +336,8 @@ main section,#footer{
   visibility:hidden;opacity:0;
   transition:opacity .5s ease, transform .75s cubic-bezier(.22,.61,.21,1), visibility 0s linear .8s;
   overflow:hidden;
+  will-change:transform,opacity;
+  overscroll-behavior:contain;
 }
 main section.is-active,#footer.is-active{
   visibility:visible;opacity:1;
@@ -820,6 +822,9 @@ body[data-screen="1"] .sun-glint i{
 ============================================================ */
 @media (max-width: 900px){
   main section,#footer{overflow-y:auto;}
+  /* モバイルGPU負荷軽減: 重いフィルターを無効化して遷移のカクつきを防ぐ */
+  .brushwipe svg{filter:none;}
+  #cursorGlow{display:none;}
   .hero-inner{grid-template-columns:1fr;}
   #sunStage{right:-30vw;top:36%;width:100vw;}
   .message-inner{grid-template-columns:1fr;gap:5vh;}
@@ -1502,6 +1507,23 @@ body.qa-still[data-screen="1"] .sun-emblem,body.qa-final .sun-emblem{opacity:1!i
 
   var touchY = null;
   addEventListener('touchstart', function(e){ touchY = e.touches[0].clientY; }, {passive:true});
+  // スワイプ中の不要なネイティブスクロール/バウンスを抑止（ガタつき防止）
+  addEventListener('touchmove', function(e){
+    if(!document.body.classList.contains('is-open')) return;
+    if(document.body.classList.contains('menu-open')) return;
+    var sec = slides[cur];
+    if(animating || !sec){ e.preventDefault(); return; }
+    // セクション内スクロールの余地がない場合は常に抑止
+    if(getComputedStyle(sec).overflowY !== 'auto' || sec.scrollHeight <= sec.clientHeight + 4){
+      e.preventDefault();
+      return;
+    }
+    // 内部スクロール可能でも、端からさらに引っ張る動きは抑止
+    var dy = touchY !== null ? (touchY - e.touches[0].clientY) : 0;
+    var atTop = sec.scrollTop <= 0;
+    var atBottom = sec.scrollTop + sec.clientHeight >= sec.scrollHeight - 2;
+    if((dy > 0 && atBottom) || (dy < 0 && atTop)) e.preventDefault();
+  }, {passive:false});
   addEventListener('touchend', function(e){
     if(touchY === null || animating || !document.body.classList.contains('is-open')) return;
     var dy = touchY - e.changedTouches[0].clientY;
