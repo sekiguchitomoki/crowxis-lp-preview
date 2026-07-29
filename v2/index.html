@@ -12,12 +12,11 @@
 <link rel="stylesheet" href="css/gate.css">
 </head>
 <body>
-<!-- === v2（修正版）: ①右側の光背の回転を停止 ②カーソル光の視認性UP。assetsは親フォルダ参照 === -->
 
 <!-- ==================== パスワードゲート（限定公開） ==================== -->
 <div id="pwGate">
   <div class="pw-box">
-    <img src="../assets/logo_yoko.svg" alt="Crowxis" class="pw-logo">
+    <img src="assets/logo_yoko.svg" alt="Crowxis" class="pw-logo">
     <p class="pw-lead">このページは限定公開です。<br>パスワードを入力してください。</p>
     <form id="pwForm" autocomplete="off">
       <input type="password" id="pwInput" placeholder="Password" autocomplete="off" autofocus>
@@ -30,7 +29,7 @@
 
 <!-- ==================== OPENING ==================== -->
 <div id="opening">
-  <video id="openingVideo" src="../assets/opening.mp4" autoplay muted playsinline preload="auto"></video>
+  <video id="openingVideo" src="assets/opening.mp4" autoplay muted playsinline preload="auto"></video>
   <div id="openingFlash"></div>
   <div class="opening-ui">
     <button class="op-btn" id="skipBtn">SKIP&nbsp;&nbsp;≫</button>
@@ -52,14 +51,14 @@
 <!-- ==================== 太陽ステージ ==================== -->
 <div id="sunStage">
   <div class="halo"><i class="halo-rays"></i></div>
-  <div class="sun-emblem"><img src="../assets/mark_sumi.png" alt="Crowxisの紋章"></div>
+  <div class="sun-emblem"><img src="assets/mark_sumi.png" alt="Crowxisの紋章"></div>
   <div class="sun-glint"><i></i></div>
 </div>
 
 <!-- ==================== HEADER ==================== -->
 <header class="site-header">
   <a class="header-brand" href="#hero">
-    <img src="../assets/logo_yoko.svg" alt="Crowxis">
+    <img src="assets/logo_yoko.svg" alt="Crowxis">
     <small>Produced by CFD</small>
   </a>
   <button id="menuBtn" aria-label="メニュー"><span></span><span></span><span></span></button>
@@ -131,7 +130,7 @@
   <div class="brushwipe bw-hero" data-brush data-shape="arc" data-align="xMidYMax"></div>
   <div class="hero-inner">
     <div class="hero-left">
-      <h1 class="hero-logo"><img src="../assets/logo_square.svg" alt="Crowxis"></h1>
+      <div class="hero-logo"><img src="assets/logo_square.svg" alt="Crowxis ロゴ"></div>
       <p class="hero-kana">クロウシス</p>
       <p class="hero-copy"><span class="split" data-stagger=".09" data-base="1.1">PCの選択に、確かな軸を</span></p>
       <div class="hero-copy-line"></div>
@@ -176,7 +175,7 @@
 <!-- ==================== 4. ABOUT ==================== -->
 <section id="about">
   <div class="brushwipe bw-about" data-brush data-shape="arc" data-align="xMidYMax" data-edgefade></div>
-  <div class="about-crow"><img src="../assets/yatagarasu_sumi.png" alt="三本足の八咫烏"></div>
+  <div class="about-crow"><img src="assets/yatagarasu_sumi.png" alt="三本足の八咫烏"></div>
   <div class="about-inner">
     <h2 class="about-title rv"><span>Crowxis</span><small>とは</small></h2>
     <div class="about-underline"></div>
@@ -232,7 +231,7 @@
 <!-- ==================== 5. FOOTER / SITEMAP ==================== -->
 <footer id="footer">
   <div class="brushwipe bw-footer" data-brush data-shape="arc" data-align="xMidYMax"></div>
-  <div class="footer-crow"><img src="../assets/yatagarasu_sumi2.png" alt="三本足の八咫烏"></div>
+  <div class="footer-crow"><img src="assets/yatagarasu_sumi2.png" alt="三本足の八咫烏"></div>
   <div class="footer-inner">
     <div class="sitemap">
       <div class="sitemap-block rv">

@@ -98,13 +98,8 @@ body::before{
 /* ---- cursor glow ---- */
 #cursorGlow{
   position:fixed;z-index:2;pointer-events:none;
-  width:440px;height:440px;border-radius:50%;
-  /* v2: 淡すぎて見えにくかったため中心を明るく・引き締めて視認性UP */
-  background:radial-gradient(circle,
-    rgba(247,222,140,.34) 0%,
-    rgba(236,196,96,.18) 26%,
-    rgba(229,182,77,.07) 50%,
-    transparent 70%);
+  width:520px;height:520px;border-radius:50%;
+  background:radial-gradient(circle, rgba(229,182,77,.10) 0%, rgba(229,182,77,.03) 40%, transparent 70%);
   transform:translate(-50%,-50%);
   mix-blend-mode:screen;
   transition:opacity .5s;
@@ -407,16 +402,13 @@ body[data-screen="1"] #sunStage{opacity:1;}
   filter:blur(20px);
 }
 .halo-rays{
-  position:absolute;inset:-14%;display:block;opacity:.55;
-  /* v2: 細かい光条＋回転を廃止。環境依存のモアレで「高速回転」して見える不具合を根絶し、
-     滑らかなリング状の光背に置換（回転なし・静止） */
-  background:radial-gradient(circle at 50% 50%,
-    transparent 30%,
-    rgba(242,208,124,.10) 44%,
-    rgba(238,198,104,.06) 56%,
-    transparent 72%);
+  position:absolute;inset:-14%;display:block;opacity:.6;
+  background:repeating-conic-gradient(from 0deg, rgba(242,208,124,.12) 0deg 8deg, transparent 8deg 22deg);
+  -webkit-mask-image:radial-gradient(circle at 50% 50%, transparent 18%, #000 42%, transparent 78%);
+  mask-image:radial-gradient(circle at 50% 50%, transparent 18%, #000 42%, transparent 78%);
   mix-blend-mode:screen;
   filter:blur(30px);
+  /* v2: 回転(raysSpin)のみ停止。見た目はv1と同一の静止した光背（高速回転して見える不具合を解消） */
 }
 @keyframes haloBreath{0%,100%{opacity:.7;}50%{opacity:1;}}
 /* （2枚目の背景バースト演出は廃止 — 後光は静かに佇むだけ） */
