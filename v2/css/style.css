@@ -98,8 +98,13 @@ body::before{
 /* ---- cursor glow ---- */
 #cursorGlow{
   position:fixed;z-index:2;pointer-events:none;
-  width:520px;height:520px;border-radius:50%;
-  background:radial-gradient(circle, rgba(229,182,77,.10) 0%, rgba(229,182,77,.03) 40%, transparent 70%);
+  width:440px;height:440px;border-radius:50%;
+  /* v2: 淡すぎて見えにくかったため中心を明るく・引き締めて視認性UP */
+  background:radial-gradient(circle,
+    rgba(247,222,140,.34) 0%,
+    rgba(236,196,96,.18) 26%,
+    rgba(229,182,77,.07) 50%,
+    transparent 70%);
   transform:translate(-50%,-50%);
   mix-blend-mode:screen;
   transition:opacity .5s;
