@@ -1,0 +1,43 @@
+/* Crowxis LP — パスワードゲート（限定公開プレビュー用・本番では不要） */
+#pwGate{
+  position:fixed;inset:0;z-index:300;
+  background:
+    radial-gradient(900px 600px at 70% 40%, rgba(70,54,20,.25), transparent 65%),
+    linear-gradient(160deg,#1c1d22 0%, #101114 100%);
+  display:flex;align-items:center;justify-content:center;
+  transition:opacity .5s ease;
+}
+#pwGate.out{opacity:0;pointer-events:none;}
+.pw-box{text-align:center;padding:0 24px;}
+.pw-logo{height:52px;width:auto;margin:0 auto 30px;}
+.pw-lead{
+  font-family:var(--f-min);font-size:14px;line-height:2.1;letter-spacing:.12em;
+  color:var(--paper-dim);margin-bottom:30px;
+}
+#pwForm{display:flex;gap:12px;justify-content:center;}
+#pwInput{
+  width:min(260px,60vw);padding:13px 18px;
+  background:rgba(236,233,228,.06);
+  border:1px solid rgba(236,233,228,.3);border-radius:999px;
+  color:var(--paper);font-family:var(--f-sans);font-size:14px;letter-spacing:.1em;
+  outline:none;transition:border-color .3s;
+}
+#pwInput:focus{border-color:var(--gold);}
+#pwForm button{
+  font-family:var(--f-en);font-size:12px;letter-spacing:.24em;
+  color:var(--paper);background:none;cursor:pointer;
+  border:1px solid rgba(236,233,228,.5);border-radius:999px;padding:13px 26px;
+  transition:all .3s;
+}
+#pwForm button:hover{border-color:var(--gold);color:var(--gold-hi);box-shadow:0 0 18px rgba(229,182,77,.3);}
+#pwErr{
+  display:block;margin-top:18px;min-height:1.4em;
+  font-family:var(--f-sans);font-size:12px;letter-spacing:.1em;color:#d98a8a;
+}
+.pw-box.shake{animation:pwShake .4s ease;}
+@keyframes pwShake{
+  0%,100%{transform:translateX(0);}
+  25%{transform:translateX(-8px);}
+  50%{transform:translateX(8px);}
+  75%{transform:translateX(-5px);}
+}
