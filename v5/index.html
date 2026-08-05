@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crowxis｜PCの選択に、確かな軸を - Produced by CFD</title>
+<meta name="description" content="Crowxis（クロウシス）— PCの選択に、確かな軸を。CFDが贈る、PC選びの新しい基準。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Serif+JP:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/gate.css">
+</head>
+<body>
+
+<!-- ==================== パスワードゲート（限定公開） ==================== -->
+<div id="pwGate">
+  <div class="pw-box">
+    <img src="assets/logo_yoko.svg" alt="Crowxis" class="pw-logo">
+    <p class="pw-lead">このページは限定公開です。<br>パスワードを入力してください。</p>
+    <form id="pwForm" autocomplete="off">
+      <input type="password" id="pwInput" placeholder="Password" autocomplete="off" autofocus>
+      <button type="submit">ENTER</button>
+    </form>
+    <span id="pwErr"></span>
+  </div>
+</div>
+<script src="js/gate.js"></script>
+
+<!-- ==================== OPENING ==================== -->
+<div id="opening">
+  <video id="openingVideo" src="assets/opening.mp4" autoplay muted playsinline preload="auto"></video>
+  <div id="openingFlash"></div>
+  <div class="opening-ui">
+    <button class="op-btn" id="skipBtn">SKIP&nbsp;&nbsp;≫</button>
+  </div>
+  <div class="op-progress"><i id="opBar"></i></div>
+</div>
+<div id="openingRing"></div>
+
+<!-- ==================== 背景ステージ ==================== -->
+<div id="bgStage">
+  <div class="bg-tint bgt-hero"></div>
+  <div class="bg-tint bgt-message"></div>
+  <div class="bg-tint bgt-movie"></div>
+  <div class="bg-tint bgt-about"></div>
+  <div class="bg-tint bgt-news"></div>
+  <div class="bg-tint bgt-footer"></div>
+</div>
+
+<!-- ==================== 太陽ステージ ==================== -->
+<div id="sunStage">
+  <div class="halo"><i class="halo-rays"></i></div>
+  <div class="sun-emblem"><img src="assets/mark_crow.svg" alt="Crowxisの紋章"></div>
+</div>
+
+<!-- ==================== HEADER ==================== -->
+<header class="site-header">
+  <a class="header-brand" href="#hero">
+    <img src="assets/logo_yoko.svg" alt="Crowxis">
+    <small>Produced by CFD</small>
+  </a>
+  <button id="menuBtn" aria-label="メニュー"><span></span><span></span><span></span></button>
+</header>
+
+<div id="menuOverlay">
+  <nav class="menu-inner">
+    <div class="menu-col">
+      <div class="menu-group">
+        <a class="mg-head" href="#hero">Home<small>ページトップ</small></a>
+      </div>
+      <div class="menu-group">
+        <span class="mg-head">Brand Identity</span>
+        <ul>
+          <li><a href="#message">メッセージ</a></li>
+          <li><a href="#movie">イメージムービー</a></li>
+          <li><a href="#about">Crowxisとは</a></li>
+        </ul>
+      </div>
+      <div class="menu-group">
+        <span class="mg-head">Concept</span>
+        <ul>
+          <li><a href="#about">ビジョン</a></li>
+          <li><a href="#about">名称・キャラクター</a></li>
+          <li><a href="#about">製品思想</a></li>
+        </ul>
+      </div>
+      <div class="menu-group">
+        <a class="mg-head" href="#news">News &amp; Information</a>
+      </div>
+    </div>
+    <div class="menu-col menu-col2">
+      <div class="menu-group">
+        <a class="mg-head jp" href="#">各種お問い合わせ</a>
+      </div>
+      <div class="menu-group">
+        <a class="mg-head jp" href="#">運営情報<small>（シー・エフ・デー販売株式会社）</small></a>
+      </div>
+    </div>
+    <div class="menu-group menu-foot">
+      <nav class="menu-links">
+        <a href="#">情報セキュリティポリシー</a>
+        <a href="#">プライバシーポリシー</a>
+        <a href="#">SNS運用方針</a>
+        <a href="#">サイトのご利用について</a>
+        <a href="#">サイトマップ</a>
+        <a href="#">CFD販売へのお問い合わせ</a>
+      </nav>
+      <div class="menu-sns">
+        <a href="#" aria-label="X（旧Twitter）">
+          <svg viewBox="0 0 24 24"><path d="M18.9 1.2h3.7l-8.1 9.3L24 22.8h-7.5l-5.9-7.7-6.7 7.7H.2l8.7-9.9L0 1.2h7.7l5.3 7 5.9-7zm-1.3 19.4h2L6.6 3.3h-2.2l13.2 17.3z"/></svg>
+        </a>
+        <a href="#" aria-label="Facebook">
+          <svg viewBox="0 0 24 24"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.09 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.7 4.53-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.96.93-1.96 1.89v2.26h3.33l-.53 3.49h-2.8V24C19.61 23.09 24 18.1 24 12.07z"/></svg>
+        </a>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<nav id="pager" aria-label="ページ内ナビゲーション"></nav>
+
+<div id="cursorGlow"></div>
+<canvas id="particles"></canvas>
+
+<main>
+<!-- ==================== 1. HERO ==================== -->
+<section id="hero">
+  <div class="brushwipe bw-hero" data-brush data-shape="arc" data-align="xMidYMax"></div>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <h1 class="hero-logo"><img src="assets/logo_square.svg" alt="Crowxis｜クロウシス"></h1>
+      <p class="hero-kana">クロウシス</p>
+      <p class="hero-copy"><span class="split" data-stagger=".09" data-base="1.1">PCの選択に、確かな軸を</span></p>
+      <div class="hero-copy-line"></div>
+    </div>
+  </div>
+  <a class="hero-notice" href="#" aria-label="重要なお知らせ">
+    <span class="hn-label">重要なお知らせ</span>
+    <span class="hn-text">【ご注意ください】当サイトを名乗る詐欺サイトが確認されています。</span>
+  </a>
+  <div class="scroll-cue" id="scrollCue">SCROLL<i></i></div>
+</section>
+
+<!-- ==================== 2. MESSAGE ==================== -->
+<section id="message">
+  <div class="brushwipe bw-msg" data-brush data-shape="arc" data-align="xMidYMax" data-reverse></div>
+  <div class="message-inner">
+    <div class="message-text">
+      <span class="section-label rv">Message</span>
+      <p class="rv-ink" data-delay="1">古より、その黒鳥は<span class="em">『進むべき道』</span>を<br>人に啓示してきたといわれる。</p>
+      <p class="rv-ink" data-delay="2">それは、混沌とした時代に、<br>確かな判断をするための<span class="em">軸</span>となろう。</p>
+      <p class="rv-ink" data-delay="3">いま、その知性や慧眼をPC選びに。<br>あなたが思い描く創造環境をかなえるために。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 3. MOVIE（ブランドCM） ==================== -->
+<section id="movie">
+  <div class="brushwipe bw-movie" data-brush data-shape="arc" data-align="xMidYMax" data-edgefade></div>
+  <div class="movie-inner">
+    <span class="section-label rv">Brand Movie</span>
+    <h2 class="movie-title rv" data-delay="1">ブランドCM</h2>
+    <div class="movie-frame rv" data-delay="2">
+      <button class="movie-play" aria-label="再生">
+        <i></i>
+      </button>
+      <span class="movie-coming">COMING SOON</span>
+    </div>
+    <p class="movie-caption rv" data-delay="3">ブランドムービーは近日公開予定です。</p>
+  </div>
+</section>
+
+<!-- ==================== 4. ABOUT ==================== -->
+<section id="about">
+  <div class="brushwipe bw-about" data-brush data-shape="arc" data-align="xMidYMax" data-edgefade></div>
+  <div class="about-crow"><img src="assets/yatagarasu_sumi.png" alt="三本足の八咫烏"></div>
+  <div class="about-inner">
+    <h2 class="about-title rv"><span>Crowxis</span><small>とは</small></h2>
+    <div class="about-underline"></div>
+    <div class="about-cols">
+      <div class="about-col rv" data-delay="1">
+        <h3>Vision</h3>
+        <p>PC選びで本当の満足を得るために、どう考え、何を選択すべきか。悩めるユーザーに、いくつもの選択肢より、<span class="gold">ぶれない一つの基準</span>を。</p>
+      </div>
+      <div class="about-col rv" data-delay="2">
+        <h3>Character</h3>
+        <p>世にあふれる製品。プロの知識や経験を、ユーザーのために役立てたい。あたかも<span class="gold">八咫烏（Crow）の示唆</span>が選択の<span class="gold">軸（axis）</span>となるかのように。</p>
+      </div>
+      <div class="about-col rv" data-delay="3">
+        <h3>Products</h3>
+        <p>スペックだけを競わず「これでよかった」と心から満足できる製品との出会いを、あなたに。<span class="gold">PCに精通したプロ</span>が、多角的な視点から厳選。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 4. NEWS ==================== -->
+<section id="news">
+  <div class="brushwipe bw-news" data-brush data-shape="arc" data-align="xMidYMax" data-edgefade></div>
+  <div class="news-inner">
+    <h2 class="news-title rv">ニュースヘッドライン</h2>
+    <div class="news-list">
+      <a class="news-item rv" data-delay="1" href="#">
+        <div class="news-meta">
+          <span class="news-date">2026.07.14</span>
+          <span class="news-cat">イベント/セミナー</span>
+        </div>
+        <div>
+          <h4>無料でドローンの基礎知識が学べて飛行体験もできる「DJI New Pilot Experience」を2026年7月19日 長野市にて開催</h4>
+        </div>
+      </a>
+      <a class="news-item rv" data-delay="2" href="#">
+        <div class="news-meta">
+          <span class="news-date">2026.06.01</span>
+          <span class="news-cat">イベント/セミナー</span>
+        </div>
+        <div>
+          <h4>「最新水中ドローン FIFISH E-MASTER NAVI 無料体験会」を北海道苫小牧市にて2026年6月23日に開催 / 6月3日〜6月5日、6月17日〜6月20日 幕張メッセで展示会に出展</h4>
+          <p class="detail">水中ドローンメーカーQYSEA社の最新水中ドローン「FIFISH E-MASTER NAVI」の無料体験会を2026年6月23日 北海道苫小牧市にて開催いたします。また、6月3日〜6月5日、6月17日〜6月20日 幕張メッセで展示会にも出展いたします。</p>
+        </div>
+      </a>
+    </div>
+    <div class="news-cta rv" data-delay="3">
+      <a class="cta-btn" href="#footer"><span>各種お問い合わせ</span><span class="arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 5. FOOTER / SITEMAP ==================== -->
+<footer id="footer">
+  <div class="brushwipe bw-footer" data-brush data-shape="arc" data-align="xMidYMax"></div>
+  <div class="footer-crow"><img src="assets/yatagarasu_sumi2.png" alt="三本足の八咫烏"></div>
+  <div class="footer-inner">
+    <div class="sitemap">
+      <div class="sitemap-block rv">
+        <a href="#hero"><h5>Home<small>ページトップ</small></h5></a>
+      </div>
+      <div class="sitemap-block rv" data-delay="1">
+        <h5>Brand Identity</h5>
+        <ul>
+          <li><a href="#message">メッセージ</a></li>
+          <li><a href="#movie">イメージムービー</a></li>
+          <li><a href="#about">Crowxisとは</a></li>
+        </ul>
+      </div>
+      <div class="sitemap-block rv" data-delay="2">
+        <h5>Concept</h5>
+        <ul>
+          <li><a href="#about">ビジョン</a></li>
+          <li><a href="#about">名称・キャラクター</a></li>
+          <li><a href="#about">製品思想</a></li>
+        </ul>
+      </div>
+      <div class="sitemap-block rv" data-delay="3">
+        <a href="#news"><h5>News &amp; Information</h5></a>
+      </div>
+    </div>
+    <div class="sitemap footer-col2">
+      <div class="sitemap-block rv" data-delay="1">
+        <a href="#"><h5 class="jp">各種お問い合わせ</h5></a>
+      </div>
+      <div class="sitemap-block rv" data-delay="2">
+        <a href="#"><h5 class="jp">運営情報<small>（シー・エフ・デー販売株式会社）</small></h5></a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-divider"></div>
+  <div class="footer-bottom">
+    <nav class="footer-links">
+      <a href="#">情報セキュリティポリシー</a>
+      <a href="#">プライバシーポリシー</a>
+      <a href="#">SNS運用方針</a>
+      <a href="#">サイトのご利用について</a>
+      <a href="#">サイトマップ</a>
+      <a href="#">CFD販売へのお問い合わせ</a>
+    </nav>
+    <div class="footer-sns">
+      <a href="#" aria-label="X（旧Twitter）">
+        <svg viewBox="0 0 24 24"><path d="M18.9 1.2h3.7l-8.1 9.3L24 22.8h-7.5l-5.9-7.7-6.7 7.7H.2l8.7-9.9L0 1.2h7.7l5.3 7 5.9-7zm-1.3 19.4h2L6.6 3.3h-2.2l13.2 17.3z"/></svg>
+      </a>
+      <a href="#" aria-label="Facebook">
+        <svg viewBox="0 0 24 24"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.09 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.7 4.53-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.96.93-1.96 1.89v2.26h3.33l-.53 3.49h-2.8V24C19.61 23.09 24 18.1 24 12.07z"/></svg>
+      </a>
+    </div>
+    <p class="copyright">©CFD Sales INC. All rights Reserved.</p>
+  </div>
+</footer>
+</main>
+
+<script src="js/main.js"></script>
+</body>
+</html>
