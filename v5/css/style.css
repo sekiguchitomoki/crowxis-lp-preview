@@ -594,7 +594,7 @@ body[data-screen="1"] .sun-emblem{
 ============================================================ */
 /* 八咫烏 — 墨絵（オリジナル素材・左向き・三本足） */
 .about-crow{
-  position:absolute;top:-7vh;right:0;width:min(50vw,920px);opacity:0;
+  position:absolute;top:-4vh;right:0;width:min(40vw,720px);opacity:0;
   transition:opacity 2s ease .6s;pointer-events:none;
 }
 #about.on .about-crow{opacity:.96;}
@@ -753,7 +753,8 @@ body[data-screen="1"] .sun-emblem{
 .sitemap li a:hover{color:var(--gold-hi);gap:16px;}
 .sitemap-block > a{display:inline-block;}
 .sitemap-block > a:hover h5{color:var(--gold-hi);}
-.footer-col2{border-left:1px solid rgba(236,233,228,.12);padding-left:5vw;}
+/* v5: 各種お問い合わせ列の左の区切り縦線を削除（余白は維持） */
+.footer-col2{padding-left:5vw;}
 .footer-divider{
   margin-top:0;height:2px;position:relative;z-index:5;flex:none;
   background:linear-gradient(90deg,transparent, rgba(236,233,228,.2) 30%, rgba(236,233,228,.2) 70%, transparent);
