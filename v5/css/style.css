@@ -598,15 +598,8 @@ body[data-screen="1"] .sun-emblem{
   transition:opacity 2s ease .6s;pointer-events:none;
 }
 #about.on .about-crow{opacity:.96;}
-.about-crow::before{
-  content:"";position:absolute;inset:-12%;
-  background:radial-gradient(circle at 50% 54%, rgba(228,222,210,.15), rgba(228,222,210,.06) 46%, rgba(228,222,210,.02) 62%, transparent 78%);
-}
-/* 足元の光だまり — 三本の足と枝をしっかり見せる */
-.about-crow::after{
-  content:"";position:absolute;inset:0;
-  background:radial-gradient(ellipse 46% 18% at 49% 86%, rgba(232,226,214,.34), rgba(230,224,212,.14) 52%, transparent 78%);
-}
+/* v5: 旧デザインの白っぽいグロー/足元ライトを削除
+   （新しい八咫烏では縁が「うっすら白い線/帯」に見えるため。鴉は単体で見せる） */
 .about-crow img{
   position:relative;z-index:1;
   mask-image:radial-gradient(ellipse closest-side at 50% 50%, #000 76%, transparent 100%);
@@ -716,10 +709,7 @@ body[data-screen="1"] .sun-emblem{
   position:absolute;right:3vw;top:42%;transform:translateY(-50%);
   width:min(34vw,560px);opacity:.9;pointer-events:none;
 }
-.footer-crow::before{
-  content:"";position:absolute;inset:-16%;
-  background:radial-gradient(circle at 50% 50%, rgba(226,220,208,.14), rgba(226,220,208,.05) 46%, transparent 72%);
-}
+/* v5: フッター八咫烏の白っぽい光背も削除（縁が薄い線に見えるのを防止） */
 .footer-crow img{
   position:relative;
   mask-image:radial-gradient(ellipse closest-side at 50% 50%, #000 68%, transparent 100%);
